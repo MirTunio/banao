@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banao - Construction Commodities Prices</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Tabletop.js/1.5.3/tabletop.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Banao - Construction Commodities Retail Prices</h1>
+    <table id="prices-table">
+        <thead>
+            <tr>
+                <th>Commodity</th>
+                <th>Unit</th>
+                <th>Price (PKR)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/2PACX-1vSzvQrmS5qZtBtBQuiHj-aynleS1SavKUC1g1-WflZgVxj10eWyWi_MiFzfKrNL_JvBtKj24kbPnCbP/pubhtml';
+
+        function init() {
+            Tabletop.init({
+                key: publicSpreadsheetUrl,
+                simpleSheet: true,
+                callback: populateTable
+            });
+        }
+
+        function populateTable(data) {
+            const tableBody = document.querySelector('#prices-table tbody');
+            tableBody.innerHTML = '';
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.Commodity}</td>
+                    <td>${row.Unit}</td>
+                    <td>${row.Price}</td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
