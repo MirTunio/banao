@@ -3,68 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banao ~ Construction Commodities Prices</title>
-    <script src="tabletop.min.js"></script>
+    <title>Banao - Construction Prices</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
         }
-        table {
+
+        header {
+            background-color: #0078d4;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        iframe {
+            border: none;
             width: 100%;
-            border-collapse: collapse;
+            height: 600px;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f4f4f4;
+
+        footer {
+            background-color: #0078d4;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <h1>Banao ~ Construction Commodities Retail Prices</h1>
-    <table id="prices-table">
-        <thead>
-            <tr>
-                <th>Commodity</th>
-                <th>Unit</th>
-                <th>Price (PKR)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Data will be populated here -->
-        </tbody>
-    </table>
-
-    <script>
-        const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSzvQrmS5qZtBtBQuiHj-aynleS1SavKUC1g1-WflZgVxj10eWyWi_MiFzfKrNL_JvBtKj24kbPnCbP/pubhtml';
-
-        function init() {
-            Tabletop.init({
-                key: publicSpreadsheetUrl,
-                simpleSheet: true,
-                callback: populateTable
-            });
-        }
-
-        function populateTable(data) {
-            const tableBody = document.querySelector('#prices-table tbody');
-            tableBody.innerHTML = '';
-            data.forEach(row => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td>${row.Commodity}</td>
-                    <td>${row.Unit}</td>
-                    <td>${row.Price}</td>
-                `;
-                tableBody.appendChild(tr);
-            });
-        }
-
-        window.addEventListener('DOMContentLoaded', init);
-    </script>
+    <header>
+        Banao - Construction Commodity Prices
+    </header>
+    <div class="content">
+        <iframe 
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSzvQrmS5qZtBtBQuiHj-aynleS1SavKUC1g1-WflZgVxj10eWyWi_MiFzfKrNL_JvBtKj24kbPnCbP/pubhtml" 
+            frameborder="0">
+        </iframe>
+    </div>
+    <footer>
+        © 2025 Banao
+    </footer>
 </body>
 </html>
